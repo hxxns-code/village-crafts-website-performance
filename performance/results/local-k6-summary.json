@@ -1,0 +1,148 @@
+{
+    "metrics": {
+        "data_received": {
+            "count": 24421500,
+            "rate": 794582.9223454858
+        },
+        "http_req_connecting": {
+            "avg": 1.0893380000000004,
+            "min": 0,
+            "med": 1.00645,
+            "max": 9.241,
+            "p(90)": 1.66022,
+            "p(95)": 2.072195000000001
+        },
+        "checks": {
+            "passes": 600,
+            "fails": 0,
+            "value": 1
+        },
+        "iteration_duration": {
+            "max": 1069.4385,
+            "p(90)": 1033.8812,
+            "p(95)": 1044.050415,
+            "avg": 1021.1777253333325,
+            "min": 1009.8531,
+            "med": 1018.1485
+        },
+        "http_req_duration": {
+            "med": 5.62835,
+            "max": 36.9542,
+            "p(90)": 14.092240000000007,
+            "p(95)": 21.62304500000001,
+            "avg": 7.874824000000002,
+            "min": 0
+        },
+        "http_reqs": {
+            "count": 300,
+            "rate": 9.760861400964139
+        },
+        "vus_max": {
+            "value": 5,
+            "min": 5,
+            "max": 5
+        },
+        "http_req_blocked": {
+            "avg": 1.244282666666668,
+            "min": 0,
+            "med": 1.1457,
+            "max": 9.241,
+            "p(90)": 1.8593800000000005,
+            "p(95)": 2.3633300000000004
+        },
+        "http_req_failed": {
+            "passes": 0,
+            "fails": 300,
+            "value": 0
+        },
+        "http_req_sending": {
+            "avg": 0.11570099999999998,
+            "min": 0,
+            "med": 0,
+            "max": 4.4116,
+            "p(90)": 0.50731,
+            "p(95)": 0.575925
+        },
+        "data_sent": {
+            "count": 24750,
+            "rate": 805.2710655795414
+        },
+        "http_req_tls_handshaking": {
+            "avg": 0,
+            "min": 0,
+            "med": 0,
+            "max": 0,
+            "p(90)": 0,
+            "p(95)": 0
+        },
+        "vus": {
+            "min": 5,
+            "max": 5,
+            "value": 5
+        },
+        "iterations": {
+            "count": 150,
+            "rate": 4.880430700482069
+        },
+        "http_req_duration{expected_response:true}": {
+            "avg": 7.874824000000002,
+            "min": 0,
+            "med": 5.62835,
+            "max": 36.9542,
+            "p(90)": 14.092240000000007,
+            "p(95)": 21.62304500000001
+        },
+        "http_req_receiving": {
+            "avg": 3.4740363333333333,
+            "min": 0,
+            "med": 3.1387,
+            "max": 15.5146,
+            "p(90)": 6.67302,
+            "p(95)": 7.925445000000001
+        },
+        "http_req_waiting": {
+            "min": 0,
+            "med": 1.7454,
+            "max": 33.1691,
+            "p(90)": 11.306000000000015,
+            "p(95)": 17.430025000000025,
+            "avg": 4.2850866666666665
+        }
+    },
+    "root_group": {
+        "groups": {},
+        "checks": {
+                "homepage: status is 200": {
+                    "id": "c9d62f9f6008a1828c5ae614c5e3ebfa",
+                    "passes": 150,
+                    "fails": 0,
+                    "name": "homepage: status is 200",
+                    "path": "::homepage: status is 200"
+                },
+                "homepage: response has a body": {
+                    "fails": 0,
+                    "name": "homepage: response has a body",
+                    "path": "::homepage: response has a body",
+                    "id": "3ce1c22234ac34be615bdcf89dc9c742",
+                    "passes": 150
+                },
+                "new-pieces: status is 200": {
+                    "name": "new-pieces: status is 200",
+                    "path": "::new-pieces: status is 200",
+                    "id": "b9ff1dcce7e179f35a1fe4696c58a5f0",
+                    "passes": 150,
+                    "fails": 0
+                },
+                "new-pieces: response has a body": {
+                    "passes": 150,
+                    "fails": 0,
+                    "name": "new-pieces: response has a body",
+                    "path": "::new-pieces: response has a body",
+                    "id": "ba2bb8ff0beecc6e595d0857faf8d369"
+                }
+            },
+        "name": "",
+        "path": "",
+        "id": "d41d8cd98f00b204e9800998ecf8427e"
+    }
+}

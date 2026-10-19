@@ -216,3 +216,32 @@ The experimental copy extracts embedded Base64 images into separate local assets
 | `our-story.html` | 1,079.1 KB | 43.0 KB | 96.0% |
 
 **Important limitation:** These percentages describe HTML document size, not total page weight. Images still need to be downloaded separately, so these results alone do not establish an equivalent improvement in real-world loading speed. The optimized copy is experimental; the live website was not changed by this study.
+
+
+$readmePath = ".\README.md"
+$readme = Get-Content $readmePath -Raw
+
+if ($readme.Contains("performance-test-report.md")) {
+    Write-Host "README already links to the report."
+}
+else {
+    Add-Content $readmePath @'
+
+
+## Step 4 — Link the report from your README and publish
+
+Run this block next. It adds a link to the report without duplicating the section if it already exists.
+
+```powershell
+$readmePath = ".\README.md"
+$readme = Get-Content $readmePath -Raw
+
+if ($readme.Contains("performance-test-report.md")) {
+    Write-Host "README already links to the report."
+}
+else {
+    Add-Content $readmePath @'
+
+## Reproducible Load Testing
+
+A reusable k6 script tests the local experimental homepage and New Pieces page under five virtual users for 30 seconds. The recorded run, structured summary, reproduction instructions, and limitations are documented in the [performance test report](performance/results/performance-test-report.md).
