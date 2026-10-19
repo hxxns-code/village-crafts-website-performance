@@ -1,212 +1,91 @@
-﻿# Village Crafts — Website Development & Performance Study
+﻿# Village Crafts — Website Design & Performance Study
 
-*A story-driven digital showroom connecting handcrafted furniture from Jodhpur and fine mussars from Srinagar with homes in Oman.*
+A story-driven digital showroom for Village Crafts, a Muscat-based business offering handcrafted furniture inspired by Jodhpur and traditional shawls from Kashmir and Srinagar.
 
-**Live website:** https://villagecrafts.shop/
-
-## Website Preview
-
-### Homepage
-
-![Village Crafts homepage](screenshots/homepage.png)
-
-### Collection
-
-![Village Crafts collection page](screenshots/collection.png)
-
-## Overview
-
-Village Crafts is a local business in Qurum, Muscat, Oman, founded by Ahmed Hilal. It offers handmade furniture from Jodhpur, India, and fine pashmina mussars from Srinagar, Kashmir.
-
-The website was designed as an immersive, story-driven experience rather than a conventional online shop. It guides visitors from the origins of the products through craftsmanship and collection discovery to a personal introduction to the founder and a direct enquiry.
-
-The central idea is: **Bring home a piece of its story.**
-
-There is no online checkout. Customers enquire directly through WhatsApp.
-
-## Part 1 — Website Development
-
-### Concept and storytelling
-
-The homepage follows a deliberate narrative:
-
-1. **Hero:** A skippable introduction leads into a full-screen opening.
-2. **The Journey:** An animated route traces the products' journey from Srinagar and Jodhpur to Muscat.
-3. **The Craft:** Four visual stages explore wood grain, hand carving, brass inlay and the finished piece.
-4. **New Pieces:** Selected furniture is presented with individual enquiry actions.
-5. **Why Village Crafts:** Communicates the shop's qualities and values.
-6. **Gallery:** A visual grid with a full-screen lightbox.
-7. **A Note from the Owner:** A personal letter-style card from Ahmed Hilal.
-8. **Contact:** WhatsApp, Instagram and showroom location details.
-
-The story moves from origin to craftsmanship, then to the object, the person and finally an invitation to enquire.
-
-### Design language: Wood and mussar
-
-**Wood-inspired design**
-- Dark walnut palette with warm brass and gold accents.
-- Oxblood red highlights and parchment-cream reading surfaces.
-- Subtle CSS wood-grain textures.
-- Plaque-inspired image frames and brass-outline product-card hover effects.
-
-**Woven-inspired design**
-- Fine diagonal twill textures across selected sections.
-- Drifting paisley (boteh) border strips used as section dividers.
-- A brass-and-red progress bar that fills as the visitor scrolls, inspired by a thread being woven.
-
-**Motion and interaction**
-- Scroll-triggered reveal animations.
-- Soft image fades.
-- Full-screen gallery lightbox.
-- Floating WhatsApp enquiry button.
-- Responsive layouts for desktop and mobile.
-
-### Website pages
-
-| File | Description |
-|---|---|
-| `index.html` | Main story experience, from the hero to the final contact section. |
-| `our-story.html` | Introduces the Srinagar and Jodhpur product origins. |
-| `collection.html` | Horizontally scrolling featured collection with WhatsApp enquiries. |
-| `new-pieces.html` | Presents 25 new pieces with individual enquiry messages. |
-| `gallery.html` | Image gallery with a full-screen lightbox. |
-| `contact.html` | WhatsApp, Instagram, showroom location and directions. |
-
-### Enquiry workflow
-
-The site uses WhatsApp deep links with prefilled messages identifying the selected product, for example:
-
-> Hello Village Crafts, I'd like to enquire about the [piece name]
-
-This connects product discovery to a direct conversation without requiring a custom backend, shopping cart or payment gateway.
-
-## Part 2 — Performance Analysis
-
-### Investigation
-
-The original HTML files contained large Base64-encoded image payloads. I investigated their document sizes and created a separate experimental copy that extracted images into local asset files and reused identical image files where possible.
-
-The live website and original source files were not modified by this experiment.
-
-### HTML size comparison
-
-| Page | Original HTML (KB) | Experimental HTML (KB) | Reduction |
-|---|---:|---:|---:|
-| Home | 3938.7 | 66.8 | 98.3% |
-| Collection | 1859.3 | 44.7 | 97.6% |
-| Contact | 616.2 | 73.2 | 88.1% |
-| Gallery | 3115.2 | 69.5 | 97.8% |
-| New Pieces | 6266.8 | 91.8 | 98.5% |
-| Our Story | 1079.1 | 43.0 | 96.0% |
-
-These reductions refer to HTML file sizes only. They do not establish the same reduction in total page downloads or prove improved real-world loading speed.
-
-### Validation and limitations
-
-- Confirmed all six experimental HTML pages were present.
-- Checked 70 detected local asset references; no missing files were reported.
-- Inspected the experimental pages in a browser.
-- Some embedded image data remained and requires further investigation.
-- Used HTTP requests and k6 for exploratory performance measurements.
-- Localhost timings are not directly comparable with production measurements.
-
-A controlled browser-based test and a review of total transfer size would be needed to establish the user-perceived performance impact.
-
-## Tech stack
-
-- HTML5
-- CSS3
-- Vanilla JavaScript
-- GSAP and ScrollTrigger
-- Google Fonts
-- WhatsApp deep links
-- Google Maps links
-- Python for the optimization experiment
-- PowerShell for validation and file operations
-- Git and GitHub
-- Cloudflare hosting and DNS
-
-The website uses no frontend framework or build step. Images in the original website are embedded directly in the HTML.
-
-## Repository structure
-
-```text
-village-crafts-performance-study/
-├── README.md
-├── .gitignore
-├── performance/
-│   ├── scripts/
-│   │   └── optimize_village_site.py
-│   └── results/
-│       └── html-size-comparison.csv
-├── screenshots/
-└── website/                 # Local only; excluded from Git
-    ├── index.html
-    ├── our-story.html
-    ├── collection.html
-    ├── new-pieces.html
-    └── ...
-```
-
-The `website/` folder contains the local source copy and is excluded from Git until permission to publish the client source and imagery is confirmed.
-
-## Run locally
-
-The website is static and has no build step.
-
-1. Obtain the website source files with appropriate permission.
-2. Open `index.html` in a browser.
-
-Alternatively, run a simple local server from the website directory:
-
-```bash
-python -m http.server 8000
-```
-
-Open `http://localhost:8000` in your browser.
-
-## Deployment
-
-The live site is hosted on Cloudflare using the custom domain:
-
-**https://villagecrafts.shop/**
-
-The domain was configured through NameSilo and connected to Cloudflare. The current enquiry workflow relies on WhatsApp links rather than a custom backend.
-
-## Roadmap
-
-- [ ] Replace generated imagery with professional photography of the actual stock.
-- [ ] Investigate and remove remaining embedded image data where appropriate.
-- [ ] Measure total page transfer size and browser-based loading performance under controlled conditions.
-- [ ] Review accessibility, keyboard navigation, image descriptions and reduced-motion support.
-- [ ] Continue refining responsive layouts and animation behaviour.
-- [ ] Consider a maintainable product content workflow as the collection grows.
-
-## Credits and transparency
-
-- **Business:** Village Crafts, founded by Ahmed Hilal, Muscat, Oman.
-- **Imagery:** Images are AI-generated visualisations created with Google Gemini to represent the shop's real products. They are not photographs taken in the shop, a workshop or the artisans' studios.
-- **Implementation:** AI-assisted coding was used alongside human direction, content and design decisions, asset selection, configuration, review and testing.
-- **Libraries and services:** GSAP, GSAP ScrollTrigger, Google Fonts, WhatsApp, Google Maps and Cloudflare.
-
-## Screenshot
-
-Add a representative homepage screenshot here.
-
-`[Homepage screenshot placeholder]`
+**Live Website:** [villagecrafts.shop](https://villagecrafts.shop/)  
+**GitHub Repository:** [village-crafts-website-performance](https://github.com/hxxns-code/village-crafts-website-performance)
 
 ---
 
-*Village Crafts — Bring home a piece of its story.*
+## 1. Project Overview
 
+Village Crafts needed a digital presence that reflected the character, craftsmanship, and cultural heritage behind its products.
 
-## Performance Study
+The goal was to create more than a conventional product catalogue: a digital showroom where visitors could explore the brand's story, browse collections, view product imagery, and enquire directly through WhatsApp.
 
-The experimental copy extracts embedded Base64 images into separate local assets and reduces the size of the HTML documents.
+I contributed to the design direction, content, asset selection, client coordination, domain and deployment setup, and testing. AI-assisted development tools were used extensively to generate and refine the website code.
 
-![HTML file size reduction chart](screenshots/performance-comparison.svg)
+### Project Objectives
 
-| Page | Original HTML | Optimized HTML | Size reduction |
+- Build a visually distinctive website that communicates craftsmanship and heritage.
+- Create a consistent experience across desktop and mobile devices.
+- Make product discovery and customer enquiries straightforward.
+- Deploy the website using a custom domain and Cloudflare.
+- Investigate website performance and experiment with HTML optimisation on a separate local copy.
+
+## 2. Website Preview
+
+Explore the website by clicking either screenshot or the links beneath it.
+
+### Homepage
+
+[![Village Crafts homepage](screenshots/homepage.png)](https://villagecrafts.shop/)
+
+[**Visit the live homepage →**](https://villagecrafts.shop/)
+
+### Collection
+
+[![Village Crafts collection page](screenshots/collection.png)](https://villagecrafts.shop/collection.html)
+
+[**Explore the live collection →**](https://villagecrafts.shop/collection.html)
+
+---
+
+## 3. Design & User Experience
+
+The visual direction combines traditional craft influences with a modern editorial layout.
+
+### Visual Identity
+
+- **Colour palette:** Cream, walnut, brass, gold, and oxblood tones.
+- **Visual details:** Textures, decorative paisley-inspired dividers, and refined typography.
+- **Motion:** Subtle animations and scroll-based visual effects.
+- **Responsive design:** Layouts designed to adapt to different screen sizes.
+
+### Website Pages
+
+The website is organised into six HTML pages:
+
+| Page | Purpose |
+|---|---|
+| Homepage | Introduces the brand and guides visitors through the showroom. |
+| Our Story | Communicates the brand's identity and craftsmanship. |
+| Collection | Presents the product collection. |
+| New Pieces | Highlights selected pieces and newer additions. |
+| Gallery | Provides a visual browsing experience with a lightbox. |
+| Contact | Helps visitors get in touch with the business. |
+
+### Customer Enquiry Workflow
+
+The website uses WhatsApp links to connect product discovery with direct customer enquiries.
+
+Visitors can explore products and initiate a conversation without going through a checkout process.
+
+**Scope:** This is a showcase and enquiry website, not a full e-commerce platform. It does not implement online payments, a shopping cart, or a backend order-management system.
+
+---
+
+## 4. Performance Optimisation Study
+
+Alongside the website, I conducted a separate experiment to investigate how large HTML files affect page delivery and how restructuring the files could improve performance.
+
+The original website contained unusually large HTML documents. I created an experimental copy and used a Python optimisation script to reduce their size.
+
+**Important:** These optimisations were tested on a local experimental copy. They have not been presented as changes to the live website.
+
+### HTML File Size Comparison
+
+| HTML file | Original size | Optimised size | Reduction |
 |---|---:|---:|---:|
 | `index.html` | 3,938.7 KB | 66.8 KB | 98.3% |
 | `collection.html` | 1,859.3 KB | 44.7 KB | 97.6% |
@@ -215,33 +94,181 @@ The experimental copy extracts embedded Base64 images into separate local assets
 | `new-pieces.html` | 6,266.8 KB | 91.8 KB | 98.5% |
 | `our-story.html` | 1,079.1 KB | 43.0 KB | 96.0% |
 
-**Important limitation:** These percentages describe HTML document size, not total page weight. Images still need to be downloaded separately, so these results alone do not establish an equivalent improvement in real-world loading speed. The optimized copy is experimental; the live website was not changed by this study.
+The results show substantial reductions in the size of the HTML documents in the experimental copy.
 
+These figures refer to **HTML file sizes only**. They do not represent the percentage reduction in total page weight, which also depends on images, stylesheets, scripts, fonts, and other resources.
 
-$readmePath = ".\README.md"
-$readme = Get-Content $readmePath -Raw
+### Performance Comparison
 
-if ($readme.Contains("performance-test-report.md")) {
-    Write-Host "README already links to the report."
-}
-else {
-    Add-Content $readmePath @'
+The original and experimental homepage were evaluated using Lighthouse under a simulated mobile environment.
 
+| Metric | Original homepage | Optimised experiment |
+|---|---:|---:|
+| Lighthouse performance score | 53–55 | 82–86 |
+| First Contentful Paint (FCP) | 21.9–23.2 s | 1.7 s |
+| Largest Contentful Paint (LCP) | 23.2–23.3 s | 4.1–4.7 s |
+| Cumulative Layout Shift (CLS) | 0 | 0 |
+| Total Blocking Time (TBT) | 0–160 ms | 0 ms |
 
-## Step 4 — Link the report from your README and publish
+**Testing context:** Lighthouse 13.4.1, Moto G Power emulation, and Slow 4G simulation. The optimised results shown are from two recorded runs after an additional CSS adjustment. Lighthouse results can vary between runs, so these results should be interpreted as measurements from this experiment rather than guaranteed production performance.
 
-Run this block next. It adds a link to the report without duplicating the section if it already exists.
+### What I Investigated
 
-```powershell
-$readmePath = ".\README.md"
-$readme = Get-Content $readmePath -Raw
+- Identifying oversized HTML files.
+- Reducing document size in a separate experimental copy.
+- Checking local asset references and page availability.
+- Measuring page performance with Lighthouse.
+- Comparing browser loading metrics before and after optimisation.
+- Investigating how CSS animation and initial element visibility can affect the rendering experience.
 
-if ($readme.Contains("performance-test-report.md")) {
-    Write-Host "README already links to the report."
-}
-else {
-    Add-Content $readmePath @'
+### Local Load Testing
 
-## Reproducible Load Testing
+I also used k6 to exercise selected pages served from a local Python HTTP server.
 
-A reusable k6 script tests the local experimental homepage and New Pieces page under five virtual users for 30 seconds. The recorded run, structured summary, reproduction instructions, and limitations are documented in the [performance test report](performance/results/performance-test-report.md).
+The test checked that requests returned successful HTTP responses and that response bodies were non-empty.
+
+The test configuration used five virtual users over approximately 30 seconds. The recorded runs reported successful checks and no failed requests.
+
+These were local tests, not a production load test. The results therefore do not establish how the website would perform under equivalent traffic on its live hosting infrastructure.
+
+### Asset Validation
+
+The experimental copy was checked for missing local assets. The validation covered six HTML pages and 70 local asset references.
+
+Some embedded `data:image/` references remained outside the scope of the completed investigation. The validation should not be interpreted as a complete audit of every possible browser rendering issue.
+
+---
+
+## 5. Technology & Tools
+
+| Technology or tool | Purpose |
+|---|---|
+| HTML | Website page structure |
+| CSS | Layout, styling, responsive design, and animations |
+| JavaScript | Interactive website features |
+| WhatsApp links | Direct customer enquiries |
+| Cloudflare | Domain DNS and website deployment |
+| Python | Local development and HTML optimisation experiments |
+| k6 | Local HTTP load testing |
+| Lighthouse | Browser performance evaluation |
+| Git and GitHub | Version control and project documentation |
+| AI-assisted development tools | Code generation, iteration, and debugging assistance |
+
+The exact tools used for code generation were part of an AI-assisted development workflow. The project documentation distinguishes that workflow from my contributions to the design, content, deployment, and evaluation.
+
+---
+
+## 6. Repository Structure
+
+```text
+village-crafts-website-performance/
+├── README.md
+├── .gitignore
+├── screenshots/
+│   ├── homepage.png
+│   ├── collection.png
+│   └── performance-comparison.svg
+└── performance/
+    ├── scripts/
+    │   ├── optimize_village_site.py
+    │   └── site-load-test.js
+    └── results/
+        ├── html-size-comparison.csv
+        ├── local-k6-run.txt
+        ├── local-k6-summary.json
+        └── performance-test-report.md
+```
+
+This is the intended structure of the project repository. File availability depends on what has actually been committed to the `main` branch.
+
+The original website files and the experimental optimised copy are maintained separately and are not necessarily included in this repository.
+
+---
+
+## 7. Running the Experiments Locally
+
+The following steps describe the general workflow. Run them from the project directory after obtaining the repository and the corresponding website files.
+
+### Start a local HTTP server
+
+From the directory containing the HTML files:
+
+```bash
+python -m http.server 8000
+```
+
+Open `http://localhost:8000/` in your browser.
+
+### Run the k6 test
+
+With k6 installed and the local server running, execute the load-test script from the repository root:
+
+```bash
+k6 run performance/scripts/site-load-test.js
+```
+
+Check the script's configured URLs and port before running it. The script must target the local server you started.
+
+### Run Lighthouse
+
+Use Chrome DevTools or Lighthouse to test the local homepage. Keep the device emulation and network throttling consistent when comparing results.
+
+### Review the optimisation results
+
+See the `performance/results/` directory for the recorded report, CSV comparison, and test outputs that have been committed.
+
+---
+
+## 8. Deployment
+
+The live website is available at:
+
+**[https://villagecrafts.shop/](https://villagecrafts.shop/)**
+
+The project uses a custom domain configured through Cloudflare. The website was deployed as a static website, without a custom application backend.
+
+The performance experiment was kept separate from the live website so that optimisation work could be evaluated without unintentionally changing the client's production site.
+
+---
+
+## 9. Key Learnings
+
+This project provided practical experience in:
+
+- Translating a client's brand identity into a digital experience.
+- Planning multi-page website navigation and customer journeys.
+- Working with responsive layouts, visual assets, and interactive elements.
+- Configuring a custom domain and DNS for deployment.
+- Using GitHub to document a project and its experiments.
+- Measuring performance with Lighthouse and k6.
+- Distinguishing document-size improvements from overall page-load improvements.
+- Using AI-assisted development tools while reviewing and testing their output.
+
+The performance work reinforced an important lesson: optimisation claims need to be supported by clearly documented test conditions, reproducible measurements, and an honest distinction between local experiments and production results.
+
+---
+
+## 10. Future Improvements
+
+Potential next steps include:
+
+- Optimising and serving images in appropriate modern formats.
+- Reviewing image dimensions and lazy-loading behaviour.
+- Investigating remaining embedded image data.
+- Improving accessibility and keyboard navigation.
+- Testing performance on the deployed website under controlled conditions.
+- Repeating Lighthouse tests and reporting median results.
+- Expanding load tests to cover additional routes and realistic user journeys.
+- Considering a maintainable content-management workflow if the business grows.
+
+---
+
+## 11. Credits
+
+Created for **Village Crafts**, a Muscat-based business celebrating handcrafted furniture and traditional textiles.
+
+The project was developed through a combination of personal design and project work, client feedback, and AI-assisted code generation.
+
+**Live website:** [villagecrafts.shop](https://villagecrafts.shop/)  
+**Project repository:** [GitHub](https://github.com/hxxns-code/village-crafts-website-performance)
+
