@@ -1,0 +1,41 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="570" viewBox="0 0 1000 570">
+  <rect width="1000" height="570" rx="18" fill="#171923"/>
+  <text x="48" y="55" fill="#ffffff" font-family="Arial,sans-serif" font-size="27" font-weight="bold">Village Crafts — HTML Size Reduction</text>
+  <text x="48" y="85" fill="#b8bdcc" font-family="Arial,sans-serif" font-size="15">Original HTML compared with the experimental optimized copy</text>
+  <text x="48" y="132" fill="#b8bdcc" font-family="Arial,sans-serif" font-size="13">HTML file size reduction</text>
+  <text x="690" y="132" fill="#b8bdcc" font-family="Arial,sans-serif" font-size="13">Reduction</text>
+  <g font-family="Arial,sans-serif" font-size="16" fill="#f0f1f5">
+    <text x="48" y="178">index.html</text>
+    <text x="48" y="238">collection.html</text>
+    <text x="48" y="298">contact.html</text>
+    <text x="48" y="358">gallery.html</text>
+    <text x="48" y="418">new-pieces.html</text>
+    <text x="48" y="478">our-story.html</text>
+  </g>
+  <g fill="#303544">
+    <rect x="250" y="158" width="400" height="25" rx="5"/>
+    <rect x="250" y="218" width="400" height="25" rx="5"/>
+    <rect x="250" y="278" width="400" height="25" rx="5"/>
+    <rect x="250" y="338" width="400" height="25" rx="5"/>
+    <rect x="250" y="398" width="400" height="25" rx="5"/>
+    <rect x="250" y="458" width="400" height="25" rx="5"/>
+  </g>
+  <g fill="#56c6a9">
+    <rect x="250" y="158" width="393.2" height="25" rx="5"/>
+    <rect x="250" y="218" width="390.4" height="25" rx="5"/>
+    <rect x="250" y="278" width="352.4" height="25" rx="5"/>
+    <rect x="250" y="338" width="391.2" height="25" rx="5"/>
+    <rect x="250" y="398" width="394" height="25" rx="5"/>
+    <rect x="250" y="458" width="384" height="25" rx="5"/>
+  </g>
+  <g font-family="Arial,sans-serif" font-size="17" font-weight="bold" fill="#75e2c3">
+    <text x="690" y="178">98.3%</text>
+    <text x="690" y="238">97.6%</text>
+    <text x="690" y="298">88.1%</text>
+    <text x="690" y="358">97.8%</text>
+    <text x="690" y="418">98.5%</text>
+    <text x="690" y="478">96.0%</text>
+  </g>
+  <line x1="48" y1="515" x2="952" y2="515" stroke="#414757"/>
+  <text x="48" y="543" fill="#b8bdcc" font-family="Arial,sans-serif" font-size="13">Measured HTML file sizes only — not total page transfer size or proven load-time improvement.</text>
+</svg>

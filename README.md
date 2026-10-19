@@ -199,3 +199,20 @@ Add a representative homepage screenshot here.
 
 *Village Crafts — Bring home a piece of its story.*
 
+
+## Performance Study
+
+The experimental copy extracts embedded Base64 images into separate local assets and reduces the size of the HTML documents.
+
+![HTML file size reduction chart](screenshots/performance-comparison.svg)
+
+| Page | Original HTML | Optimized HTML | Size reduction |
+|---|---:|---:|---:|
+| `index.html` | 3,938.7 KB | 66.8 KB | 98.3% |
+| `collection.html` | 1,859.3 KB | 44.7 KB | 97.6% |
+| `contact.html` | 616.2 KB | 73.2 KB | 88.1% |
+| `gallery.html` | 3,115.2 KB | 69.5 KB | 97.8% |
+| `new-pieces.html` | 6,266.8 KB | 91.8 KB | 98.5% |
+| `our-story.html` | 1,079.1 KB | 43.0 KB | 96.0% |
+
+**Important limitation:** These percentages describe HTML document size, not total page weight. Images still need to be downloaded separately, so these results alone do not establish an equivalent improvement in real-world loading speed. The optimized copy is experimental; the live website was not changed by this study.
