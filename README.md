@@ -4,6 +4,16 @@
 
 **Live website:** https://villagecrafts.shop/
 
+## Website Preview
+
+### Homepage
+
+![Village Crafts homepage](screenshots/homepage.png)
+
+### Collection
+
+![Village Crafts collection page](screenshots/collection.png)
+
 ## Overview
 
 Village Crafts is a local business in Qurum, Muscat, Oman, founded by Ahmed Hilal. It offers handmade furniture from Jodhpur, India, and fine pashmina mussars from Srinagar, Kashmir.
@@ -188,3 +198,4 @@ Add a representative homepage screenshot here.
 ---
 
 *Village Crafts — Bring home a piece of its story.*
+
