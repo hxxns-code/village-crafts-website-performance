@@ -1,0 +1,15 @@
+﻿# Keep the original website source and client imagery local for now
+/website/
+
+# Local experimental website copy
+/village-crafts-optimized-site/
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Local environment and editor files
+.env
+.vscode/
+.DS_Store
+Thumbs.db
